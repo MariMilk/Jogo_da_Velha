@@ -1,0 +1,224 @@
+### Funções a serem executadas no programa principal
+def tab(): #mosta o tabuleiro do jogo
+    print ("|", lista1[0], "|", lista1[1], "|", lista1[2], "|")
+    print ("|", lista2[0], "|", lista2[1], "|", lista2[2], "|")
+    print ("|", lista3[0], "|", lista3[1], "|", lista3[2], "|")
+    
+    
+def preencheEspacox(): #usado para fazer a jogada do jogador X
+    linha = int(input("Jogador_X, escolha uma linha (1, 2 ou 3) para a jogada: "))
+    coluna = int(input("Jogador_X, escolha uma coluna (1, 2 ou 3) para a jogada: "))
+    if linha == 1 and coluna == 1:
+        if " " in lista1[0]: #usado para detectar se o campo está previamente preenchido
+            lista1[0] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 1 and coluna == 2:
+        if " " in lista1[1]: 
+            lista1[1] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 1 and coluna == 3:
+        if " " in lista1[2]: 
+            lista1[2] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 2 and coluna == 1:
+        if " " in lista2[0]: 
+            lista2[0] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 2 and coluna == 2:
+        if " " in lista2[1]: 
+            lista2[1] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 2 and coluna == 3:
+        if " " in lista2[2]: 
+            lista2[2] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 3 and coluna == 1:
+        if " " in lista3[0]: 
+            lista3[0] = "x"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    elif linha == 3 and coluna == 2:
+        if " " in lista3[1]: 
+            lista3[1] = "x"
+        else:
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()
+    else: 
+        if " " in lista3[2]: 
+            lista3[2] = "x"
+        else:
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacox()            
+              
+    
+def preencheEspacoO(): #usado para fazer a jogada do jogador O
+    linha = int(input("Jogador_O, escolha uma linha (1, 2 ou 3) para a jogada: "))
+    coluna = int(input("Jogador_O, escolha uma coluna (1, 2 ou 3) para a jogada: "))
+    if linha == 1 and coluna == 1:
+        if " " in lista1[0]: 
+            lista1[0] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+
+    elif linha == 1 and coluna == 2:
+        if " " in lista1[1]: 
+            lista1[1] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    elif linha == 1 and coluna == 3:
+        if " " in lista1[2]: 
+            lista1[2] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    elif linha == 2 and coluna == 1:
+        if " " in lista2[0]: 
+            lista2[0] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    elif linha == 2 and coluna == 2:
+        if " " in lista2[1]: 
+            lista2[1] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    elif linha == 2 and coluna == 3:
+        if " " in lista2[2]: 
+            lista2[2] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    elif linha == 3 and coluna == 1:
+        if " " in lista3[0]: 
+            lista3[0] = "O"
+        else: 
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    elif linha == 3 and coluna == 2:
+        if " " in lista3[1]: 
+            lista3[1] = "O"
+        else:
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()
+    else: 
+        if " " in lista3[2]: 
+            lista3[2] = "O"
+        else:
+            print("Espaço escolhido já está preenchido, tente novamente!")
+            preencheEspacoO()           
+
+
+#programa principal    
+lista1 = [" ", " ", " "]
+lista2 = [" ", " ", " "]
+lista3 = [" ", " ", " "]
+
+tab()
+
+#cont usado para limitar o número de jogadas, caso termine as jogadas e não haja vencedor,
+#aparecerá a info empate fora do laço
+cont = 0 
+
+while cont < 9:
+    if cont% 2 == 0:
+        preencheEspacox()
+#bloco abaixo para detectar o vencedor não está em função, pois o break dentro da função e fora do laço dá erro de execução
+# foi utilizado um bloco de verificação para analisar se em cada rodada houve vencedor
+        if lista1[0] == "x" and lista1[1] == "x" and lista1[2] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1 #usado apenas para conseguir a condicional para chegar ao empate
+            break
+        elif lista2[0] == "x" and lista2[1] == "x" and lista2[2] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista3[0] == "x" and lista3[1] == "x" and lista3[2] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[0] == "x" and lista2[0] == "x" and lista3[0] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[1] == "x" and lista2[1] == "x" and lista3[1] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[2] == "x" and lista2[2] == "x" and lista3[2] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[0] == "x"  and lista2[1] =="x" and lista3[2] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[2] == "x" and lista2[1] == "x" and lista3[0] == "x":
+            print ("Jogador X, você ganhou o jogo!")
+            cont = 1
+            break
+        
+        tab()
+        cont += 1
+        
+    elif cont%2 == 1:
+        preencheEspacoO()
+        
+        
+        if lista1[0] == "O" and lista1[1] == "O" and lista1[2] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1 
+            break
+        elif lista2[0] == "O" and lista2[1] == "O" and lista2[2] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista3[0] == "O" and lista3[1] == "O" and lista3[2] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[0] == "O" and lista2[0] == "O" and lista3[0] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[1] == "O" and lista2[1] == "O" and lista3[1] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[2] == "O" and lista2[2] == "O" and lista3[2] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[0] == "O" and lista2[1] =="O" and lista3[2] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+        elif lista1[2] == "O" and lista2[1] == "O" and lista3[0] == "O":
+            print ("Jogador O, você ganhou o jogo!")
+            cont = 1
+            break
+            
+        tab()
+        cont += 1
+if cont == 1:
+    tab()
+    print("Parabéns!")
+    
+elif cont == 9:
+    print("Empate! Fim do Jogo!!!")
+    
